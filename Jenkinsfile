@@ -20,7 +20,7 @@ node {
 
 // Release found: /mp/prod/20170111-1554/comaas-mp_prod-20170111-1554-df2297a.tar.gz ***
 
-            if(name ==~ /.*\/comaas-${tenant}_{target_env}-\d+-\d+-${githash}\.tar.gz/) {
+            if(name ==~ /.*\/comaas-${tenant}\_{target_env}-\d+-\d+-${githash}\.tar.gz/) {
             // if (name.contains("comaas-${tenant}") && name.contains("${tenant}") && name.contains("${target_env}")) {
                 echo "Release found: ${name} ***"
                 releaseName = name
