@@ -14,12 +14,12 @@ node "${tenant}" {
         def releaseNames = jsonSlurper.parseText(response.content).keySet()
         def releaseName = '-'
         for (name in releaseNames) {
-            if name.contains ${githash} {
+            if (name.contains ${githash}) {
                 echo "Release found: ${name} ***"
                 releaseName = name
             }
         }
-        if releaseName == '-' {
+        if (releaseName == '-') {
             error("Could not find release ${githash} for tenant ${tenant} in repositories server.")
         }
 
