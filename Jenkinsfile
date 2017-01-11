@@ -9,7 +9,7 @@ node {
     stage("Hoei") {
         parallel (
             "One": {
-                sh 'echo dubbele hoei ${tenant}'
+                sh 'echo dubbele hoei ${tenant} -----'
                 sh 'sleep 3'
                 sh 'echo End ONE'
             },
