@@ -2,8 +2,9 @@
 
 node {
     properties([parameters([
-        choice(choices: 'mp\nebayk', description: '', name: 'tenant'),
-        choice(choices: 'sandbox\nprod', description: '', name: 'env'),
+        string(name: 'githash'),
+        choice(choices: 'mp\nebayk', name: 'tenant'),
+        choice(choices: 'sandbox\nprod', name: 'env'),
     ]), pipelineTriggers([])])
 
     stage("Hoei") {
