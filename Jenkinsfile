@@ -8,11 +8,6 @@ node {
     }
 
     stages {
-        stage("Checkout") {
-            steps {
-                echo 'checking out source code ok ok ok'
-            }
-        }
 
         stage("Hoei") {
             steps {
@@ -36,12 +31,5 @@ node {
             }
         }
 
-        stage("Deploy") {
-            steps {
-                echo "deployen maar! tenant is ${env.TENANT}"
-                sleep 5
-                echo 'so done with this'
-            }
-        }
     }
 }
