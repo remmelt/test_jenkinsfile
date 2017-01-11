@@ -6,16 +6,18 @@ properties([parameters([
     choice(choices: 'mp\nebayk', name: 'tenant'),
 ])])
 
+def log (String msg) {
+    echo msg
+}
+
 node {
-    stage("Getv") {
-        echo "${tenant}"
-        echo "${target_env}"
+    stage("Find release") {
+        echo "Looking for release tenant: ${tenant}, env: ${target_env}, githash: ${githash}"
         def response = httpRequest "http://repo_comaas:V9Knbsi4Nm@repositories.ecg.so/v2/files/${tenant}"
-        println("Status: " + response.status)
-        def jsonSlurper = new groovy.json.JsonSlurper()
-        def releaseNames = jsonSlurper.parseText(response.content).keySet()
+        log("Status: " + response.status)
+        def releaseNames = new groovy.json.JsonSlurper().parseText(response.content).keySet()
         def releaseName = '-'
-        echo "${releaseNames}"
+        log "${releaseNames}"
         for (name in releaseNames) {
             if (name ==~ /.*\/comaas-${tenant}_${target_env}-\d+-\d+-${githash}\.tar.gz/) {
                 echo "Release found: ${name} ***"
@@ -27,6 +29,5 @@ node {
             error("Could not find release ${githash} for tenant ${tenant} and target env ${target_env} in repositories server.")
         }
 
-        echo "---${releaseName}==="
     }
 }
