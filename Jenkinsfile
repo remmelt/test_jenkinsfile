@@ -10,7 +10,7 @@ node {
     ])])
 
     stage("Getv") {
-        def response = httpRequest "http://repositories.ecg.so/v2/files/${tenant}"
+        def response = httpRequest "http://repo_comaas:V9Knbsi4Nm@repositories.ecg.so/v2/files/${tenant}"
         println("Status: "+response.status)
         def jsonSlurper = new groovy.json.JsonSlurper()
         def object = jsonSlurper.parseText(response.content)
