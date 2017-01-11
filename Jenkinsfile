@@ -1,7 +1,7 @@
 #!groovy
 
 def jsonSlurper = new groovy.json.JsonSlurper()
-def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
+def object = jsonSlurper.parseText('{ "name": "John Doe" }')
 def h = object.name
 
 node {
