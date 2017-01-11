@@ -6,7 +6,7 @@ properties([parameters([
     choice(choices: 'sandbox\nprod', name: 'env'),
 ])])
 
-node "${tenant}" {
+node {
     stage("Getv") {
         def response = httpRequest "http://repo_comaas:V9Knbsi4Nm@repositories.ecg.so/v2/files/${tenant}"
         println("Status: " + response.status)
