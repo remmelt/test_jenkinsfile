@@ -15,7 +15,7 @@ node {
         def releaseName = '-'
         echo "${releaseNames}"
         for (name in releaseNames) {
-            if (name.contains("${githash}") && name.contains("${tenant}")) {
+            if (name.contains("${githash}") && name.contains("${tenant}") && name.contains("${env}")) {
                 echo "Release found: ${name} ***"
                 releaseName = name
             }
