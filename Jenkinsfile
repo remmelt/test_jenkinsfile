@@ -1,7 +1,7 @@
 #!groovy
 
 properties([parameters([
-    string(name: 'githash', defaultValue: '1e0bffc'),
+    string(name: 'githash', defaultValue: '43408ca'),
     choice(choices: 'mp\nebayk', name: 'tenant'),
     choice(choices: 'sandbox\nprod', name: 'env'),
 ])])
