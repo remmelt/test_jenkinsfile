@@ -13,11 +13,12 @@ node {
         def jsonSlurper = new groovy.json.JsonSlurper()
         def object = jsonSlurper.parseText('{ "name": "John Doe" }')
         def h = object.name
+        echo "---${h}==="
     }
 
     stage("Hoei") {
         def response = httpRequest 'http://google.com/'
-        println("Status: -${h}- "+response.status)
+        println("Status: "+response.status)
         println("Content: "+response.content)
     }
 }
