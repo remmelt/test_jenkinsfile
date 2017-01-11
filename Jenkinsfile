@@ -1,3 +1,5 @@
-node {
-    echo 'Hello woodsajflsdlkfjs'
+
+node {
+	stage 'Checkout'
+		checkout scm
 }
