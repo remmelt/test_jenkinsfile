@@ -2,13 +2,14 @@
 
 properties([parameters([
     string(name: 'githash', defaultValue: '43408ca'),
-    choice(choices: 'mp\nebayk', name: 'tenant'),
     choice(choices: 'sandbox\nprod', name: 'ttt'),
+    choice(choices: 'mp\nebayk', name: 'tenant'),
 ])])
 
 node {
     stage("Getv") {
         echo "${tenant}"
+        echo "${ttt}"
         def response = httpRequest "http://repo_comaas:V9Knbsi4Nm@repositories.ecg.so/v2/files/${tenant}"
         println("Status: " + response.status)
         def jsonSlurper = new groovy.json.JsonSlurper()
