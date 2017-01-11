@@ -17,7 +17,10 @@ node {
         def releaseName = '-'
         echo "${releaseNames}"
         for (name in releaseNames) {
-            if(name ==~ /.*/) {
+
+// Release found: /mp/prod/20170111-1554/comaas-mp_prod-20170111-1554-df2297a.tar.gz ***
+
+            if(name ==~ /.*${githash}.*/) {
             // if (name.contains("comaas-${tenant}") && name.contains("${tenant}") && name.contains("${target_env}")) {
                 echo "Release found: ${name} ***"
                 releaseName = name
