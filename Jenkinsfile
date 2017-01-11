@@ -2,7 +2,7 @@
 
 properties([parameters([
     string(name: 'githash', defaultValue: '1e0bffc'),
-    choice(choices: 'master\nmp\nebayk', name: 'tenant'),
+    choice(choices: 'mp\nebayk', name: 'tenant'),
     choice(choices: 'sandbox\nprod', name: 'env'),
 ])])
 
