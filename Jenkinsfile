@@ -3,7 +3,7 @@
 properties([parameters([
     string(name: 'githash', defaultValue: '43408ca'),
     choice(choices: 'mp\nebayk', name: 'tenant'),
-    choice(choices: 'sandbox\nprod', name: 'env'),
+    choice(choices: 'sandbox\nprod', name: 'target_env'),
 ])])
 
 node {
@@ -15,13 +15,13 @@ node {
         def releaseName = '-'
         echo "${releaseNames}"
         for (name in releaseNames) {
-            if (name.contains("${githash}") && name.contains("${tenant}") && name.contains("${env}")) {
+            if (name.contains("${githash}") && name.contains("${tenant}") && name.contains("${target_env}")) {
                 echo "Release found: ${name} ***"
                 releaseName = name
             }
         }
         if (releaseName == '-') {
-            error("Could not find release ${githash} for tenant ${tenant} and env ${env} in repositories server.")
+            error("Could not find release ${githash} for tenant ${tenant} and target env ${target_env} in repositories server.")
         }
 
         echo "---${releaseName}==="
