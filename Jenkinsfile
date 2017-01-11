@@ -1,8 +1,6 @@
 #!groovy
 
 node {
-    agent any
-
     parameters {
         choiceParam(choices: 'mp\nmde\nebayk', description: 'Tenant?', name: 'tenant')
     }
