@@ -3,9 +3,6 @@
 def jsonSlurper = new groovy.json.JsonSlurper()
 def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
 
-assert object instanceof Map
-assert object.name == 'John Doe'
-
 node {
     properties([parameters([
         string(name: 'githash'),
