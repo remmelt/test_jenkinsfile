@@ -13,6 +13,7 @@ node {
         def jsonSlurper = new groovy.json.JsonSlurper()
         def releaseNames = jsonSlurper.parseText(response.content).keySet()
         def releaseName = '-'
+        echo "${releaseNames}"
         for (name in releaseNames) {
             if (name.contains("${githash}") && name.contains("${tenant}") && name.contains("${env}")) {
                 echo "Release found: ${name} ***"
