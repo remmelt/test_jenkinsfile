@@ -2,8 +2,7 @@
 
 node {
     properties([parameters([
-        choice(choices: ['mp', 'ebayk', 'mde', 'gtau', 'kjca', 'bt'], description: '', name: 'tenant'),
-        choice(choices: ['sandbox', 'prod'], description: '', name: 'env')
+        choice(choices: 'mp,ebayk', description: '', name: 'tenant')
     ]), pipelineTriggers([])])
 
     stage("Hoei") {
