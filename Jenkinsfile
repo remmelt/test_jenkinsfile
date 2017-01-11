@@ -1,8 +1,6 @@
 #!groovy
 
-def jsonSlurper = new groovy.json.JsonSlurper()
-def object = jsonSlurper.parseText('{ "name": "John Doe" }')
-def h = object.name
+
 
 node {
     properties([parameters([
@@ -10,6 +8,12 @@ node {
         choice(choices: 'mp\nebayk', name: 'tenant'),
         choice(choices: 'sandbox\nprod', name: 'env'),
     ])])
+
+    stage("Getv") {
+        def jsonSlurper = new groovy.json.JsonSlurper()
+        def object = jsonSlurper.parseText('{ "name": "John Doe" }')
+        def h = object.name
+    }
 
     stage("Hoei") {
         def response = httpRequest 'http://google.com/'
