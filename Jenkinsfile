@@ -10,15 +10,11 @@ node {
     ])])
 
     stage("Getv") {
+        def response = httpRequest 'http://repositories.ecg.so/v2/files/${tenant}'
+        println("Status: "+response.status)
         def jsonSlurper = new groovy.json.JsonSlurper()
-        def object = jsonSlurper.parseText('{ "name": "John Doe" }')
+        def object = jsonSlurper.parseText(response.content)
         def h = object.name
         echo "---${h}==="
-    }
-
-    stage("Hoei") {
-        def response = httpRequest 'http://google.com/'
-        println("Status: "+response.status)
-        println("Content: "+response.content)
     }
 }
