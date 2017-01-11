@@ -1,17 +1,10 @@
 #!groovy
 
 node {
-    parameters {
-        choiceParam(choices: 'mp\nmde\nebayk', description: 'Tenant?', name: 'tenant')
-    }
-stage 'promotion'
-def userInput = input(
- id: 'userInput', message: 'Let\'s promote?', parameters: [
- [$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env'],
- [$class: 'TextParameterDefinition', defaultValue: 'uat1', description: 'Target', name: 'target']
-])
-echo ("Env: "+userInput['env'])
-echo ("Target: "+userInput['target'])
+    properties([parameters([
+        choice(choices: ['mp', 'ebayk', 'mde', 'gtau', 'kjca', 'bt'], description: '', name: 'tenant'),
+        choice(choices: ['sandbox', 'prod'], description: '', name: 'env')
+    ]), pipelineTriggers([])])
 
     stage("Hoei") {
         parallel (
