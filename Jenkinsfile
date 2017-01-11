@@ -1,6 +1,6 @@
 #!groovy
 
-def jsonSlurper = new groovy.json.JsonSlurper().parseText(BUILD_CHOICES)
+def jsonSlurper = new groovy.json.JsonSlurper()
 def object = jsonSlurper.parseText('{ "name": "John Doe" } /* some comment */')
 
 assert object instanceof Map
