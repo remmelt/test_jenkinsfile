@@ -6,13 +6,13 @@ def h = object.name
 
 node {
     properties([parameters([
-        string(name: 'githash'),
+        string(name: 'githash', defaultValue: 'aaa1111'),
         choice(choices: 'mp\nebayk', name: 'tenant'),
         choice(choices: 'sandbox\nprod', name: 'env'),
     ])])
 
     stage("Hoei") {
-        def response = httpRequest 'http://localhost:8080/jenkins/api/json?pretty=true'
+        def response = httpRequest 'http://google.com/'
         println("Status: -${h}- "+response.status)
         println("Content: "+response.content)
     }
