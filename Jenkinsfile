@@ -15,13 +15,13 @@ node {
         def releaseName = '-'
         echo "${releaseNames}"
         for (name in releaseNames) {
-            if (name.contains("${githash}") && name.contains("${tenant}") && name.contains("${env}")) {
+            if (name.contains("${githash}") && name.contains("${tenant}")) {
                 echo "Release found: ${name} ***"
                 releaseName = name
             }
         }
         if (releaseName == '-') {
-            error("Could not find release ${githash} for tenant ${tenant} in repositories server.")
+            error("Could not find release ${githash} for tenant ${tenant} and env ${env} in repositories server.")
         }
 
         echo "---${releaseName}==="
