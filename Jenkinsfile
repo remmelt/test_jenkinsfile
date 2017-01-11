@@ -7,22 +7,8 @@ node {
     ]), pipelineTriggers([])])
 
     stage("Hoei") {
-        parallel (
-            "One": {
-                sh 'echo dubbele hoei ${tenant} -----'
-                sh 'sleep 3'
-                sh 'echo End ONE'
-            },
-            "Two": {
-                sh 'echo dubbele hoei2'
-                sh 'sleep 3'
-                sh 'echo End TWO'
-            },
-            "Three": {
-                sh 'echo dubbele hoei'
-                sh 'sleep 3'
-                sh 'echo End ONE'
-            },
-        )
+        def response = httpRequest 'http://localhost:8080/jenkins/api/json?pretty=true'
+        println("Status: "+response.status)
+        println("Content: "+response.content)
     }
 }
